@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Content Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            margin: 20px 0;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .ad-container {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Continue to Your Link</h1>
+    <p>Your link will be available in <span id="countdown">10</span> seconds...</p>
+
+    <!-- Kode Iklan Google AdSense dimasukkan di sini -->
+    <div class="ad-container">
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8303906044102401"
+     crossorigin="anonymous"></script>
+<!-- Test -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-8303906044102401"
+     data-ad-slot="2611259696"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+
+    <a id="redirectLink" class="btn" href="#" style="display:none;">Go to Link</a>
+</div>
+
+<script>
+    var countdownElement = document.getElementById("countdown");
+    var redirectLink = document.getElementById("redirectLink");
+    var countdown = 10;
+    
+    // Ambil URL dari parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var targetLink = urlParams.get('link');
+
+    var interval = setInterval(function() {
+        countdown--;
+        countdownElement.textContent = countdown;
+        if (countdown === 0) {
+            clearInterval(interval);
+            redirectLink.style.display = "block";
+            countdownElement.parentElement.style.display = "none";
+            redirectLink.href = targetLink || "https://defaultlink.com";
+        }
+    }, 1000);
+</script>
+
+</body>
+  </html>
+      
